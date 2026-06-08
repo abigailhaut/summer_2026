@@ -1,23 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Opening Description</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case File: Leslie Blake</title>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #1e1e1e;
+            color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+
+        .case-file {
+            background-color: #2a2a2a;
+            border: 3px solid #888;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(0,0,0,.5);
+        }
+
+        h1 {
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #3a3a3a;
+            border-left: 5px solid #b22222;
+        }
+
+        .profile-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #666;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background: #444;
+            color: white;
+            border: 1px solid #777;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 20px;
+            background-color: #b22222;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #d62828;
+        }
+
+        .warning {
+            color: #ffcc66;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        .file-stamp {
+            color: #ff4444;
+            text-align: right;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>WELCOME TO HAUT GAMES: The Disaperance of Leslie Blake</h1>
 
-    <p>
-      The vision of this game is meant to function like an escape room in a box/cold case files games that you can find nowadays, 
-      but on your computer as an interactive story. Click around, discover information, clues, and ultimately solve the case… Are you up for the task?
-      
-      Description: Your friend, Leslie Blake, is missing. The police have no suspects, no leads, and frankly don’t think there is much to do. They say 
-      with Leslie’s history and all the evidence that they gathered, they believe that she just ran away. You, however, think there is something else afoot. 
-      Leslie was one of your closest friends from college and something felt off about this. Leslie was not the most open about her past, but no matter 
-      what the police say about her “history”,  the Leslie you know now was not someone who would just leave out of the blue. She was well-loved by her 
-      friends, had a boyfriend, and she was in the middle of a semester at college. She had plans for her future. Most importantly, she wouldn’t have 
-      left without taking with her her most prized possession: the letters her mom had written her before she passed. You couldn’t just sit there and 
-      do nothing. You needed to find Leslie Blake.
-    </p>
+<div class="container">
+    <div class="case-file">
+
+        <div class="file-stamp">
+            MISSING PERSON CASE
+        </div>
+
+        <h1>CASE FILE: LESLIE BLAKE</h1>
+
+        <div class="status">
+            <strong>Status:</strong> Missing<br>
+            <strong>Police Conclusion:</strong> Voluntary Disappearance<br>
+            <strong>Your Conclusion:</strong> Unknown
+        </div>
+
+        <h2>Case Summary</h2>
+
+        <p>
+            Your friend, Leslie Blake, is missing.
+        </p>
+
+        <p>
+            The police have no suspects, no leads, and frankly don't think there is much to do.
+            They believe that Leslie simply ran away.
+        </p>
+
+        <p>
+            You disagree.
+        </p>
+
+        <p>
+            Leslie was one of your closest friends from college. She had plans, people who
+            cared about her, and a future she was actively building. Most importantly,
+            she would never have left behind her most prized possession:
+            the letters her mother wrote before she passed away.
+        </p>
+
+        <p>
+            The police may have stopped looking, but you haven't.
+        </p>
+
+        <p>
+            Sitting before you is the first collection of evidence.
+            Somewhere within it is the truth.
+        </p>
+
+        <div class="profile-section">
+            <h2>Investigator Registration</h2>
+
+            <label for="playerName">Your Name</label>
+            <input type="text" id="playerName" placeholder="Enter your name">
+
+            <label for="playerRole">Investigation Style</label>
+            <select id="playerRole">
+                <option value="Analyst">Analyst</option>
+                <option value="Researcher">Researcher</option>
+                <option value="Detective">Detective</option>
+                <option value="Journalist">Journalist</option>
+            </select>
+
+            <p class="warning">
+                This information will be used throughout the investigation.
+            </p>
+
+            <button onclick="beginCase()">
+                Open Case File
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function beginCase() {
+
+    const playerName =
+        document.getElementById("playerName").value.trim();
+
+    const playerRole =
+        document.getElementById("playerRole").value;
+
+    if(playerName === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    localStorage.setItem("playerName", playerName);
+    localStorage.setItem("playerRole", playerRole);
+
+    // Change this later to your first evidence page
+    window.location.href = "caseboard.html";
+}
+</script>
 
 </body>
 </html>
